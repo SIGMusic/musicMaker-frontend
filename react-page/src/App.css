@@ -22,6 +22,38 @@
   color: #61dafb;
 }
 
+#form{
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-direction: row;
+  position: relative;
+  left: -25%
+}
+#centered{
+    position: fixed; /* or absolute */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.PianoDarkTheme .ReactPiano__Key--accidental {
+  background: #025d7d;
+  border: 1px solid #888;
+}
+.PianoDarkTheme .ReactPiano__Key--natural {
+  background: #013243;
+  border: 1px solid #888;
+  margin-right: 0;
+}
+.PianoDarkTheme .ReactPiano__Key--active.ReactPiano__Key--accidental {
+  background: #0396ca;
+}
+.PianoDarkTheme .ReactPiano__Key--active.ReactPiano__Key--natural {
+  background: #0396ca;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

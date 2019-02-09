@@ -1,28 +1,80 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
+import 'react-piano/dist/styles.css';
+import Button from '@material-ui/core/Button';
+
+import DimensionsProvider from './DimensionsProvider';
+import SoundfontProvider from './SoundFontProvider';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+// webkitAudioContext fallback needed to support Safari
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const soundfontHostname = 'https://d1pzp51pvbm36p.cloudfront.net';
+
+const noteRange = {
+  first: MidiNumbers.fromNote('c3'),
+  last: MidiNumbers.fromNote('f4'),
+};
+const keyboardShortcuts = KeyboardShortcuts.create({
+  firstNote: noteRange.first,
+  lastNote: noteRange.last,
+  keyboardConfig: KeyboardShortcuts.HOME_ROW,
+});
+
+function App() {
+  return (
+    <div>
+
+    <div className="mt-5">
+        <ResponsivePiano />
+    </div>
+
+      <div id = "centered">
+        <div>
+          <form id = "form">
+            <input type="text" name="name" />
+          </form>
+        </div>
+
+        <div>
+        <Button variant="contained" color="primary">
+         Go !
+        </Button>
+        </div>
+
       </div>
-    );
-  }
+
+
+    </div>
+  );
 }
 
-export default App;
+
+function ResponsivePiano(props) {
+  return (
+    <DimensionsProvider>
+      {({ containerWidth, containerHeight }) => (
+        <SoundfontProvider
+          instrumentName="acoustic_grand_piano"
+          audioContext={audioContext}
+          hostname={soundfontHostname}
+          render={({ isLoading, playNote, stopNote }) => (
+            <Piano
+              noteRange={noteRange}
+              width={containerWidth}
+              playNote={playNote}
+              stopNote={stopNote}
+              disabled={isLoading}
+              keyboardShortcuts={keyboardShortcuts}
+              {...props}
+            />
+          )}
+        />
+      )}
+    </DimensionsProvider>
+  );
+} export default App
+
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);
