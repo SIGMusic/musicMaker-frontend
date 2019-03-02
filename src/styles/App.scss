@@ -1,0 +1,30 @@
+// Colors
+$link-color: #61dafb;
+$header-color: white;
+$bg-color: #282c34;
+
+// Font sizes
+$header-size: calc(10px + 2vmin);
+
+@mixin use_flex() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.App {
+    text-align: center;
+}
+
+.App-header {
+    @include use_flex();
+    background-color: $bg-color;
+    min-height: 100vh;
+    font-size: $header-size;
+    color: $header-color;
+}
+
+.App-link {
+    color: $link-color
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './assets/sigmusic_logo.jpg';
-import './stylesheets/App.css';
+import './styles/App.scss';
 import MusicMakerButton from "../src/components/musicMakerButton";
 
 class App extends Component {
@@ -9,7 +9,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
             <img src={logo} alt="logo" />
-          <MusicMakerButton />
+            <h1>MusicMaker</h1>
+            <MusicMakerButton />
         </header>
       </div>
     );
