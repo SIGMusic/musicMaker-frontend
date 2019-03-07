@@ -16,7 +16,9 @@ class MusicMakerHistory extends React.Component {
 }
 
 function chordEventMaker(chord, chordNotes) {
-    this.state.events.push({summary: chord, extraText: chordNotes});
+    this.setState(
+        this.state.events.push({summary: chord, extraText: chordNotes})
+    );
 }
 
 /*
