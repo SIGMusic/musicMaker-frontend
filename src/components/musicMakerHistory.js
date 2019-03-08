@@ -1,30 +1,37 @@
 import React from 'react';
 import { Feed } from 'semantic-ui-react';
 
-const events = []
+class MusicMakerHistory extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {events = []};
+        this.chordEventMaker = this.chordEventMaker.bind(this);
+    }
+    
+    chordEventMaker(chord, chordNotes) {
+        this.setState(
+            this.state.events.push({summary: chord, extraText: chordNotes})
+        );
+    }
 
-function chordEventMaker(chord) {
-    const image = chordImage(chord);
-    const notes = chordNotes(chord);
-
-    events.push({image: image, extraText: notes})
-}
-
-function chordImage(chord) {
-    switch (chord) {
-        default:
-            return "../assets/C-chord.jpg";
+    render() {
+        return (
+            <Feed events={this.state.events} />
+        );
     }
 }
 
+
+
+/*
 function chordNotes(chord) {
-    switch (chord) {
-        default:
-            return "C, E, G";
-    }
+    var colonIndex = chord.indexOf(":");
+    var rootNote = chord.subString(0, colonIndex);
 }
 
-const MusicMakerHistory = () => <Feed events={events} />
-
+function chordScaleDegree(root, degree) {
+    return root;
+}
+*/
 
 export default MusicMakerHistory;
