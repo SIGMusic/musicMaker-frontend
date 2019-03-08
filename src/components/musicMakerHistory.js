@@ -6,6 +6,13 @@ class MusicMakerHistory extends React.Component {
     constructor(props) {
         super(props);
         this.state = {events = []};
+        this.chordEventMaker = this.chordEventMaker.bind(this);
+    }
+    
+    chordEventMaker(chord, chordNotes) {
+        this.setState(
+            this.state.events.push({summary: chord, extraText: chordNotes})
+        );
     }
 
     render() {
@@ -15,11 +22,7 @@ class MusicMakerHistory extends React.Component {
     }
 }
 
-function chordEventMaker(chord, chordNotes) {
-    this.setState(
-        this.state.events.push({summary: chord, extraText: chordNotes})
-    );
-}
+
 
 /*
 function chordNotes(chord) {
