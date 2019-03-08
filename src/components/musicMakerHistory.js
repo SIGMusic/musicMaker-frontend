@@ -1,7 +1,6 @@
 import React from 'react';
 import { Feed } from 'semantic-ui-react';
 
-
 class MusicMakerHistory extends React.Component {
     constructor(props) {
         super(props);
