@@ -16,7 +16,7 @@ class MusicMakerHistory extends React.Component {
 
     render() {
         return (
-            <Feed events={this.state.events} />
+            <Feed events = {this.state.events}/>
         );
     }
 }

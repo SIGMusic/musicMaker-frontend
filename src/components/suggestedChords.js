@@ -16,7 +16,7 @@ class SuggestedChords extends React.Component {
 
     render() {
         return (
-            <Card.Group items =  {this.state.chords}/>
+            <Card.Group items = {this.state.chords}/>
         );
     }
 }
