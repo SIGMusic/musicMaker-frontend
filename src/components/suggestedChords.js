@@ -10,7 +10,12 @@ class SuggestedChords extends React.Component {
     
     chordCardMaker(chord, chordNotes, percentage) {
         this.setState(
-            this.state.chords.push({header: chord, description: chordNotes, meta: percentage + "%"})
+            this.state.chords.push({
+                header: chord,
+                description: chordNotes,
+                meta: percentage + "%",
+                fluid: true
+            })
         );
     }
 
