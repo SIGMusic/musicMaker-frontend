@@ -4,19 +4,22 @@ import { Feed } from 'semantic-ui-react';
 class MusicMakerHistory extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {events = []};
+        this.state = {events: []};
         this.chordEventMaker = this.chordEventMaker.bind(this);
     }
     
     chordEventMaker(chord, chordNotes) {
         this.setState(
-            this.state.events.push({summary: chord, extraText: chordNotes})
+            this.state.events.push({
+                summary: chord,
+                extraText: chordNotes
+            })
         );
     }
 
     render() {
         return (
-            <Feed events={this.state.events} />
+            <Feed events = {this.state.events}/>
         );
     }
 }
