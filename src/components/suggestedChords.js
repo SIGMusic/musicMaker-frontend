@@ -4,7 +4,7 @@ import { Card } from 'semantic-ui-react';
 class SuggestedChords extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {chords = []};
+        this.state = {chords: []};
         this.chordCardMaker = this.chordCardMaker.bind(this);
     }
     
